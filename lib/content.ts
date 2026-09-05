@@ -50,10 +50,20 @@ export function getAllWriting(): WritingMeta[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+function isSafeSlug(slug: string): boolean {
+  if (!slug || slug.includes("/") || slug.includes("\\") || slug.includes("..")) {
+    return false;
+  }
+  return /^[a-zA-Z0-9._-]+$/.test(slug);
+}
+
 export function getWritingBySlug(slug: string): WritingPost | null {
+  if (!isSafeSlug(slug)) return null;
+
   const candidates = [`${slug}.mdx`, `${slug}.md`];
   for (const name of candidates) {
-    const full = path.join(writingDir, name);
+    const full = path.resolve(writingDir, name);
+    if (!full.startsWith(path.resolve(writingDir) + path.sep)) return null;
     if (!fs.existsSync(full)) continue;
     const raw = fs.readFileSync(full, "utf8");
     const { data, content } = matter(raw);

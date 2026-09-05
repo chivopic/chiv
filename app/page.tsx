@@ -39,14 +39,6 @@ export default function HomePage() {
           >
             Projects
           </Link>
-          <a
-            href={site.contact}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
-          >
-            Contact
-          </a>
         </nav>
       </section>
 
@@ -69,16 +61,9 @@ export default function HomePage() {
         <h2 className="border-b border-border pb-2 text-sm font-medium uppercase tracking-wider text-muted-foreground">
           Exploring
         </h2>
-        <ul className="flex flex-wrap gap-2">
-          {site.exploring.map((item) => (
-            <li
-              key={item}
-              className="rounded-full border border-border px-3 py-1 text-sm text-muted-foreground"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
+        <p className="text-sm text-muted-foreground">
+          {site.exploring.join(" · ")}
+        </p>
       </section>
 
       <section className="space-y-5">

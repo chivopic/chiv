@@ -4,6 +4,5 @@ export const site = {
   motto: "build things · explore deeply · stay curious",
   url: "https://chiv-chivopic.vercel.app", // placeholder until custom domain
   github: "https://github.com/chivopic",
-  contact: "https://github.com/chivopic",
   exploring: ["Agents", "AI Infra", "Developer Tools", "Systems", "World Models"],
 };
